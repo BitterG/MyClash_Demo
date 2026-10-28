@@ -1,0 +1,41 @@
+# ===== Compile artifacts =====
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# ===== Go =====
+/bin/
+/dist/
+/vendor/
+
+# ===== IDE =====
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# ===== Logs and temp files =====
+*.log
+stderr*.log
+stdout*.log
+*.tmp
+
+# ===== Sensitive data: subscription files =====
+/config.yaml
+sub.txt
+sub2.txt
+sub2.yaml
+sub*.yaml
+
+# config.yaml.example is the sanitized template, allowed in repo
+
+# ===== Reference source code (not part of this project) =====
+/clash-verge-rev/
+
+# ===== Other =====
+main_img.png
+.DS_Store
+Thumbs.db

@@ -1,0 +1,47 @@
+# mini-clash 教学版配置（示例模板）
+# 规则行格式：TYPE,payload,target
+# 出站类型：direct / reject / socks5 / ss / trojan / hysteria2
+#
+# 注意：这是脱敏后的示例配置。
+# 真实节点信息请自行填写（密码/DoH/服务器地址均为占位符）。
+
+port: 7891
+socks-port: 7892
+
+dns:
+  enable: true
+  listen: 127.0.0.1:15353
+  fake-ip-range: 198.18.0.1/16
+
+proxies:
+  - name: DIRECT
+    type: direct
+  - name: REJECT
+    type: reject
+
+  # 示例：hysteria2 节点（带 DoH 防污染）
+  - name: HK-hy2-1
+    type: hysteria2
+    server: your-node.example.com      # ← 你的节点域名
+    port: 443                          # ← 你的节点端口
+    ports: 45000-55000                 # ← 端口跳变范围（可选）
+    doh: https://your-doh.example.com/dns-query/xxx  # ← 专属 DoH（可选）
+    password: YOUR_PASSWORD            # ← 你的认证密码
+    sni: your-sni.example.com          # ← TLS SNI
+
+  # 示例：socks5 节点
+  - name: NODE
+    type: socks5
+    server: 127.0.0.1
+    port: 1080
+
+proxy-groups:
+  - name: 节点组
+    type: select
+    proxies:
+      - HK-hy2-1
+      - NODE
+      - DIRECT
+
+rules:
+  - MATCH,节点组
