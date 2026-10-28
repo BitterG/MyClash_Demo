@@ -36,6 +36,6 @@ sub*.yaml
 /clash-verge-rev/
 
 # ===== Other =====
-main_img.png
+main_img.png          # 原始 1.4MB 截图，仓库用压缩后的 docs/main_img.jpg
 .DS_Store
 Thumbs.db
